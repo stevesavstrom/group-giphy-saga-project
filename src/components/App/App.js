@@ -1,6 +1,7 @@
 import React from 'react';
 import { HashRouter as Router, Route, Link } from 'react-router-dom'
 import Search from '../Search/Search';
+import Favorite from '../Favorite/Favorite';
 
 function App(props) {
   return (
@@ -10,10 +11,9 @@ function App(props) {
           <Route path="/" exact>
             <Search />
           </Route>
-          {/* <Route path="/Favorite">
-            <p>Favorite:</p>
-          <Favorite /> */}
-        {/* </Route> */}
+          <Route path="/favorites" exact>
+           <Favorite />
+          </Route>
       </div>
     </Router>
   );
