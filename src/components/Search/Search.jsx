@@ -6,18 +6,19 @@ function Search() {
     const [search, setSearch]= useState([]);
     const searchResults = useSelector (store => store.searchResults)
 
-    // useEffect(() => {
-    //     getSearchResults();
-    // }, []);
+    useEffect(() => {
+        getSearchResults();
+    }, []);
 
     const handleSearchChange = () => {
         event.preventDefault();
         console.log('Here I am clicking away');
-        setSearch({ [event.target.id]: event.target.value });
+        setSearch(event.target.value);
     }
 
     const getSearchResults = () => {
         dispatch({ type: 'FETCH_SEARCH', payload: search});
+        setSearch('');
     }
 
     return (
@@ -42,7 +43,7 @@ function Search() {
             <tbody>
               <tr>
                 <td>enter .map here to go over the search objects
-                    <form onSubmit={SOMETHING_GOES_HERE}>
+                    <form onSubmit={getSearchResults}>
                         <button name="favorite">Favorite</button>
                     </form>
                 </td>

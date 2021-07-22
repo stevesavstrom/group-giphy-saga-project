@@ -19,9 +19,6 @@ function* rootSaga(){
 }
 const sagaMiddleware= createSagaMiddleware();
 
-const sagaMiddleware = createSagaMiddleware();
-
-
 const searchResults = ( state = [], action ) => {
         if(action.type === 'SET_RESULTS') {
         return action.payload;
