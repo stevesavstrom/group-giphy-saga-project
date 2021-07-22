@@ -4,6 +4,17 @@ This week you will be building a Giphy searching and favoriting application whic
 
 In this project you will need to utilize React, Redux, Redux-Saga and integrate them with a 3rd party API....all in a group project!
 
+## To Do
+- [ ] Setup search - search needs a search.router.js (need to create)
+- [ ] Routes - GET for API search results, POST for favorites, PUT for selecting category.
+- [x] npm install redux react-redux, npm install redux-logger, npm install dotenv, npm install redux-saga
+- [ ]
+- [ ]
+- [ ]
+- [ ]
+- [ ]
+- [ ]
+
 ## Team Setup
 Do not clone this repository. Instead, have one person create a new repo by clicking on the **Use this template** button to make a copy. Make your team collaborators on the new repo you have created. The rest of the team members that did not make the initial repo will clone directly from the person who created the new repo, **do NOT fork** the repo.
 
