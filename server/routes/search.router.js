@@ -11,7 +11,7 @@ router.get("/", (req, res) => {
 
   axios
     .get(
-      `http://api.giphy.com/v1/gifs/search?api_key=${process.env.GIPHY_API_KEY}&limit=10`
+      `http://api.giphy.com/v1/gifs/search?api_key=${process.env.GIPHY_API_KEY}&limit=10&q=PLACEHOLDER`
     )
     .then((response) => {
       console.log(response.data);
