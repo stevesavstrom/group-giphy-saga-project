@@ -1,4 +1,4 @@
-import {useEffect} from 'react';
+import {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux'
 
 function Favorite() {
@@ -7,15 +7,13 @@ function Favorite() {
     const favoriteReducer = useSelector(store => store.favoriteReducer);
     const categoryReducer = useSelector(store => store.categoryReducer);
 
+    const [newCategory, setNewCategory] = useState('');
+
     useEffect(() => {
         getFavoritesTable();
         getCategoryTable();
         console.log('in use effect');
     }, [])
-
-    //   Routes to use
-    //  /api/favorite
-    //  /api/category
  
  
     // GET request on page load to see favorites table from database
@@ -25,21 +23,33 @@ function Favorite() {
     }
     // GET request on page load to see categories table from database
     const getCategoryTable = () => {
-        console.log('getcategoryTable');
+        console.log('getCategoryTable');
         dispatch({type: 'FETCH_CATEGORY'});
     }
     // PUT request on category select / button click
+    const changeCategory = (pictureId) => {
+        console.log('trying to change category');
+        dispatch({type: ''})
+    }
 
 
     return (
-        <>
+
         <ul>
-        {favoriteReducer.map((gif, index) => {
-            return <li key={index}><img src={gif} width="30%"/></li>
+        {favoriteReducer.map(gif => {
+            return (
+                <li key={gif.id}><img src={gif.url} width="30%"/>
+                <select onChange={(event)=>{setNewCategory(category.name)}}>
+                    <option value="blank">------</option>
+                    {categoryReducer.map(category => {
+                        return ( <option key={category.id} value={category.name}>{category.name}</option>)
+                    })}
+                </select>
+                </li>
+            )
         })}
         </ul>
-            {/* map favorites database w/ a map of the category */}
-        </>
+
     )
 
 }
