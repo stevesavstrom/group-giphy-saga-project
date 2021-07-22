@@ -17,6 +17,7 @@ function* rootSaga(){
     yield takeEvery('FETCH_CATEGORY', fetchCategory); // Any time GET request for category is needed
     // yield takeEvery('DELETE_FAVORITE', deleteFavorite);
 }
+const sagaMiddleware= createSagaMiddleware();
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -27,7 +28,6 @@ const searchResults = ( state = [], action ) => {
     }
     return state;
 }
-
 // Holds Favorites that are received from fetchFavorite()
 const favoriteReducer = ( state = [], action ) => {
     if (action.type === 'SET_FAVORITES') {
@@ -49,7 +49,7 @@ const categoryReducer = (state = [], action) => {
 // When a search term is entered, the GET returns results
 function* fetchSearch() {
 	try {
-		const response = yield axios.get('api/favorite');
+		const response = yield axios.get('api/search');
 		yield put({ type: 'SET_RESULTS', payload: response.data});
 	} catch (error) {
 		console.log('Error fetching GIFs', error);
