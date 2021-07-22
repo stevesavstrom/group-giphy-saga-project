@@ -5,7 +5,7 @@ const router = express.Router();
 
 // return all favorite images
 router.get('/', (req, res) => {
-  res.sendStatus(200);
+  const queryText = ``
 });
 
 // add a new favorite

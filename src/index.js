@@ -14,8 +14,12 @@ function* rootSaga(){
     yield takeEvery('FETCH_SEARCH', fetchSearch); // client side button click to submit search results
     yield takeEvery('FAVORITE_GIF', favoriteGif); // client side button click to add to favorites
     yield takeEvery('FETCH_FAVORITE', fetchFavorite); // Any time a GET request for favorites is needed
+    yield takeEvery('FETCH_CATEGORY', fetchCategory); // Any time GET request for category is needed
     // yield takeEvery('DELETE_FAVORITE', deleteFavorite);
 }
+
+const sagaMiddleware = createSagaMiddleware();
+
 
 const searchResults = ( state = [], action ) => {
         if(action.type === 'SET_RESULTS') {
@@ -30,6 +34,14 @@ const favoriteReducer = ( state = [], action ) => {
         return action.payload;
     }
     return state;
+}
+
+// Holds Categories that are received from fetchCategory()
+const categoryReducer = (state = [], action) => {
+  if (action.type === 'SET_CATEGORY') {
+    return action.payload
+  }
+  return state
 }
 
 // Generator Function(s)
@@ -59,16 +71,29 @@ function* fetchSearch() {
         try {
             const response = yield axios.get('/api/favorite')
             yield put({type: 'SET_FAVORITES', payload: response.data})
+            console.log('GET results', response.data)
       } catch (error) {
 		  console.log('Error trying to get favorited GIFs', error);
 	  }
   }
+
+  // GETs table of category from database and sends to categoryReducer
+  function* fetchCategory(){
+    try {
+      const response = yield axios.get('/api/category');
+      yield put({type: 'SET_CATEGORY', payload: response.data})
+    } catch (error) {
+      console.log('Error GETting categories', error);
+    }
+  }
+
 
 const store = createStore(
 	combineReducers({ 
 	//   reducers here 
         favoriteReducer,
         searchResults,
+        categoryReducer,
 	}),
 	applyMiddleware(sagaMiddleware, logger),
   );
