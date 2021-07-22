@@ -37,7 +37,7 @@ const favoriteReducer = ( state = [], action ) => {
 // When a search term is entered, the GET returns results
 function* fetchSearch() {
 	try {
-		const response = yield axios.get('api/favorite');
+		const response = yield axios.get('api/search');
 		yield put({ type: 'SET_RESULTS', payload: response.data});
 	} catch (error) {
 		console.log('Error fetching GIFs', error);
