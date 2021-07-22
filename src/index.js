@@ -16,6 +16,7 @@ function* rootSaga(){
     yield takeEvery('FETCH_FAVORITE', fetchFavorite); // Any time a GET request for favorites is needed
     // yield takeEvery('DELETE_FAVORITE', deleteFavorite);
 }
+const sagaMiddleware= createSagaMiddleware();
 
 const searchResults = ( state = [], action ) => {
         if(action.type === 'SET_RESULTS') {
@@ -23,7 +24,6 @@ const searchResults = ( state = [], action ) => {
     }
     return state;
 }
-
 // Holds Favorites that are received from fetchFavorite()
 const favoriteReducer = ( state = [], action ) => {
     if (action.type === 'SET_FAVORITES') {

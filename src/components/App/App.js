@@ -8,11 +8,11 @@ function App(props) {
       <div>
         <h1>Giphy Search!</h1>
         {/* <Route path="/" exact>
-            <StudentForm />
+            <Search />
           </Route>
-          <Route path="/allStudents">
-            <p>Student list:</p>
-          <StudentList />
+          <Route path="/Favorite">
+            <p>Favorite:</p>
+          <Favorite />
         </Route> */}
       </div>
     </Router>
