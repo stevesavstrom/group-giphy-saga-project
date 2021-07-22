@@ -4,9 +4,18 @@ import { HashRouter as Router, Route, Link } from 'react-router-dom'
 
 function App(props) {
   return (
-    <div>
-      <h1>Giphy Search!</h1>
-    </div>
+    <Router>
+      <div>
+        <h1>Giphy Search!</h1>
+        {/* <Route path="/" exact>
+            <StudentForm />
+          </Route>
+          <Route path="/allStudents">
+            <p>Student list:</p>
+          <StudentList />
+        </Route> */}
+      </div>
+    </Router>
   );
 }
 
