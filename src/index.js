@@ -21,6 +21,8 @@ const sagaMiddleware= createSagaMiddleware();
 
 const searchResults = ( state = [], action ) => {
         if(action.type === 'SET_RESULTS') {
+          console.log(`Looking for searchResults`, action.payload);
+          console.log(action.payload.data);
         return action.payload;
     }
     return state;

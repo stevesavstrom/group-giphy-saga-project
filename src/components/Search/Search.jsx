@@ -6,9 +6,9 @@ function Search() {
     const [search, setSearch]= useState([]);
     const searchResults = useSelector (store => store.searchResults)
 
-    useEffect(() => {
-        getSearchResults();
-    }, []);
+    // useEffect(() => {
+    //     getSearchResults();
+    // }, []);
 
     const handleSearchChange = () => {
         event.preventDefault();
@@ -18,7 +18,7 @@ function Search() {
 
     const getSearchResults = () => {
         dispatch({ type: 'FETCH_SEARCH', payload: search});
-        setSearch('');
+        
     }
 
     return (
@@ -41,13 +41,17 @@ function Search() {
                 
             </thead>
             <tbody>
+              {searchResults.map(result => (
               <tr>
-                <td>enter .map here to go over the search objects
+                <td>
+                  {result}
                     <form onSubmit={getSearchResults}>
                         <button name="favorite">Favorite</button>
                     </form>
+                    
                 </td>
               </tr>
+              ))}
             </tbody>
         </table>
       </>
@@ -55,3 +59,27 @@ function Search() {
 }
 
 export default Search;
+
+
+
+// <>
+// 		  <h2>Shopping List</h2>
+// 		  <table>
+// 			<thead>
+// 			  <tr>
+// 				<th>Items</th>
+// 				<th></th>
+// 			  </tr>
+// 			</thead>
+// 			<tbody>
+// 			  {props.list.map(items => (
+// 				<tr key={items.id}>
+// 				  <td>{items.item}</td>
+// 				  <td>{items.quantity}</td>
+// 				  <td>{items.unit}</td>
+// 				  <td><button name="favorite">Favorite</button></td>
+// 				</tr>
+// 			  ))}
+// 			</tbody>
+// 		  </table>
+// 		</>
