@@ -1,5 +1,6 @@
 import React from 'react';
 import { HashRouter as Router, Route, Link } from 'react-router-dom'
+import Favorite from '../Favorite/Favorite';
 
 
 function App(props) {
@@ -7,6 +8,10 @@ function App(props) {
     <Router>
       <div>
         <h1>Giphy Search!</h1>
+
+        <Route path="/favorites" exact>
+          <Favorite />
+        </Route>
         {/* <Route path="/" exact>
             <StudentForm />
           </Route>

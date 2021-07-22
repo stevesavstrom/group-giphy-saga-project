@@ -71,6 +71,7 @@ function* fetchSearch() {
         try {
             const response = yield axios.get('/api/favorite')
             yield put({type: 'SET_FAVORITES', payload: response.data})
+            console.log('GET results', response.data)
       } catch (error) {
 		  console.log('Error trying to get favorited GIFs', error);
 	  }
