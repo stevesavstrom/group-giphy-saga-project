@@ -12,13 +12,17 @@ function Search() {
   // }, []);
 
   const handleSearchChange = () => {
-    event.preventDefault();
     setSearch(event.target.value);
   };
 
-  const getSearchResults = () => {
+  const getSearchResults = (event) => {
+    event.preventDefault();
     dispatch({ type: "FETCH_SEARCH", payload: search });
   };
+
+  const handleFavoriteClick = (gifUrl) => {
+    dispatch({type: "FAVORITE_GIF", payload: {url: gifUrl}})
+  }
 
   return (
     //html here
@@ -47,10 +51,10 @@ function Search() {
             return (
               <tr key={i}>
                 <td>
+                  
                   <img src={result.images.original.url}></img>
-                  <form onSubmit={getSearchResults}>
-                    <button name="favorite">Favorite</button>
-                  </form>
+                  <button onClick={() => {handleFavoriteClick(result.images.original.url)}}name="favorite">Favorite</button>
+                  
                 </td>
               </tr>
             );
@@ -62,25 +66,3 @@ function Search() {
 }
 
 export default Search;
-
-// <>
-// 		  <h2>Shopping List</h2>
-// 		  <table>
-// 			<thead>
-// 			  <tr>
-// 				<th>Items</th>
-// 				<th></th>
-// 			  </tr>
-// 			</thead>
-// 			<tbody>
-// 			  {props.list.map(items => (
-// 				<tr key={items.id}>
-// 				  <td>{items.item}</td>
-// 				  <td>{items.quantity}</td>
-// 				  <td>{items.unit}</td>
-// 				  <td><button name="favorite">Favorite</button></td>
-// 				</tr>
-// 			  ))}
-// 			</tbody>
-// 		  </table>
-// 		</>
