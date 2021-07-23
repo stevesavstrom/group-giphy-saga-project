@@ -1,64 +1,64 @@
-import React, {useEffect, useState} from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 function Search() {
-    const dispatch = useDispatch();
-    const [search, setSearch]= useState('');
-    const searchResults = useSelector (store => store.searchResults)
-    console.log(`Search results from Search component`, searchResults);
+  const dispatch = useDispatch();
+  const [search, setSearch] = useState("");
+  const searchResults = useSelector((store) => store.searchResults);
+  console.log(`Search results from Search component`, searchResults);
 
-    // useEffect(() => {
-    //     getSearchResults();
-    // }, []);
+  // useEffect(() => {
+  //     getSearchResults();
+  // }, []);
 
-    const handleSearchChange = () => {
-        event.preventDefault();
-        setSearch(event.target.value);
-    }
+  const handleSearchChange = () => {
+    event.preventDefault();
+    setSearch(event.target.value);
+  };
 
-    const getSearchResults = () => {
-        dispatch({ type: 'FETCH_SEARCH', payload: search});
-        
-    }
+  const getSearchResults = () => {
+    dispatch({ type: "FETCH_SEARCH", payload: search });
+  };
 
-    return (
-      //html here
-      //need 1 input for search
-      //submit button with onSubmit (GET)
-      //favorite button when returning search results to POST
-      //A feature to move user to next page. (look into useHistory)
-      <>
-        <form onSubmit={getSearchResults}>
-          <input value={search} onChange={handleSearchChange} placeholder="Search for Gifs" />
-          <button type="submit">Search</button>
-        </form>
-                
-        <table>
-            <thead>
-                <tr>
-                    <th>Search Results</th> 
-                </tr>
-                
-            </thead>
-            <tbody>
-              {searchResults.map((result, i) => {
-                return (
+  return (
+    //html here
+    //need 1 input for search
+    //submit button with onSubmit (GET)
+    //favorite button when returning search results to POST
+    //A feature to move user to next page. (look into useHistory)
+    <>
+      <form onSubmit={getSearchResults}>
+        <input
+          value={search}
+          onChange={handleSearchChange}
+          placeholder="Search for Gifs"
+        />
+        <button type="submit">Search</button>
+      </form>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Search Results</th>
+          </tr>
+        </thead>
+        <tbody>
+          {searchResults.map((result, i) => {
+            return (
               <tr key={i}>
                 <td>
-
-                  <img src={result[2].images.original.url}></img>
-                    <form onSubmit={getSearchResults}>
-                        <button name="favorite">Favorite</button>
-                    </form>
-
+                  <img src={result.images.original.url}></img>
+                  <form onSubmit={getSearchResults}>
+                    <button name="favorite">Favorite</button>
+                  </form>
                 </td>
               </tr>
-              )
-                })}
-            </tbody>
-        </table>
-      </>
-    );
+            );
+          })}
+        </tbody>
+      </table>
+    </>
+  );
 }
 
 export default Search;
