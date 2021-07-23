@@ -1,4 +1,4 @@
-import React from 'react';
+ import React from 'react';
 import ReactDOM from 'react-dom';
 // import './index.css';
 import App from './components/App/App.js';
@@ -84,6 +84,17 @@ function* fetchSearch(action) {
       yield put({type: 'SET_CATEGORY', payload: response.data})
     } catch (error) {
       console.log('Error GETting categories', error);
+    }
+  }
+
+  function * changeCategory(action) {
+    try {
+      console.log('newCategory is::: ', action.payload.newCategory);
+      console.log(`favId action payload`, action.payload.favId);
+      yield call(axios.put, `/api/favorite/${action.payload.favId}`, action.payload);
+      yield put({type: 'FETCH_FAVORITE'});
+    } catch (error) {
+      console.log('Error PUTting category', error);
     }
   }
 

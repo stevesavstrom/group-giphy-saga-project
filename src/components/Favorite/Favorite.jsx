@@ -43,9 +43,10 @@ function Favorite() {
     dispatch({ type: "FETCH_CATEGORY" });
   };
   // PUT request on category select / button click
-  const changeCategory = (gifId) => {
+  const changeCategory = (favId) => {
+    event.preventDefault();
     console.log("trying to change category");
-    dispatch({ type: "CHANGE_CATEGORY", payload: { gifId, newCategory } });
+    dispatch({ type: "CHANGE_CATEGORY", payload: { favId, newCategory } });
   };
 
   return (
@@ -61,7 +62,7 @@ function Favorite() {
                 image={gif.url}
               />
               <CardContent>
-                <form onSubmit={changeCategory}>
+                <form>
                     <p>Please choose a category</p>
                   {categoryReducer.map((category) => {
                     return (
@@ -71,7 +72,6 @@ function Favorite() {
                     type="radio"
                     name="categoryOption"
                     value={category.name}
-                    label="Funny"
                     id= {category.name}
                     onChange={(event) =>
                       setNewCategory(event.target.value)

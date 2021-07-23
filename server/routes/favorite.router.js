@@ -33,14 +33,16 @@ router.post('/', (req, res) => {
 // update given favorite with a category id
 router.put('/:favId', (req, res) => {
   // req.body should contain a category_id to add to this favorite image
-  const newCategory = req.body;
-  const gifId = req.params.id;
+  const newCategory = req.body.newCategory;
+  const favId = req.params.favId;
+  console.log('newCategory is:', req.body.newCategory);
+  console.log('favId is:', favId);
   const queryCategory = 
   `UPDATE favorites
   SET "category" = $1
   WHERE id = $2;`;
   
-    pool.query(queryCategory, [newCategory, gifId])
+    pool.query(queryCategory, [newCategory, favId])
     .then(() => { res.sendStatus(200); })
     .catch((err) => {
       console.log('Error completing SELECT plant query', err);
