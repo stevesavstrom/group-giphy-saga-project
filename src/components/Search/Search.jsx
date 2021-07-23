@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import './Search.css';
 
 function Search() {
   const dispatch = useDispatch();
+  // const history = useHistory();
   const [search, setSearch] = useState("");
   const searchResults = useSelector((store) => store.searchResults);
   console.log(`Search results from Search component`, searchResults);
@@ -32,12 +34,14 @@ function Search() {
     //A feature to move user to next page. (look into useHistory)
     <>
       <form onSubmit={getSearchResults}>
+        <center>
         <input
-          value={search}
-          onChange={handleSearchChange}
-          placeholder="Search for Gifs"
-        />
-        <button type="submit">Search</button>
+            value={search}
+            onChange={handleSearchChange}
+            placeholder="Search for Gifs"
+          />
+          <button type="submit">Search</button>
+      </center>
       </form>
 
       <table>

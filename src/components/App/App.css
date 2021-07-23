@@ -1,0 +1,15 @@
+.Header {
+  background: rgb(215, 246, 255);
+  background: linear-gradient(
+    90deg,
+    rgba(215, 246, 255, 1) 0%,
+    rgba(245, 97, 251, 1) 40%
+  );
+  padding: 20px;
+  text-align: center;
+}
+
+/* input {
+width: 30%;
+padding: 5px;
+} */

@@ -6,20 +6,24 @@ import {
   CardActionArea,
   CardMedia,
   CardContent,
-  Button
+  Button,
+  Grid,
+  makeStyles,
 } from "@material-ui/core";
 
 
-// const useStyles = makeStyles((theme) => ({
-//   root: {
-//     '& > *': {
-//       margin: theme.spacing(1),
-//     },
-//   },
-// }));
+const useStyles = makeStyles ({
+  root: {
+    maxWidth: 300,
+  },
+  media: {
+    height: 300,
+  },
+});
 
 function Favorite() {
   const dispatch = useDispatch();
+  const classes = useStyles();
 
   const favoriteReducer = useSelector((store) => store.favoriteReducer);
   const categoryReducer = useSelector((store) => store.categoryReducer);
@@ -47,19 +51,19 @@ function Favorite() {
     event.preventDefault();
     console.log("trying to change category");
     dispatch({ type: "CHANGE_CATEGORY", payload: { favId, newCategory } });
+    
   };
 
   return (
-    <>
+    <Grid container>
       {favoriteReducer.map((gif) => {
         return (
-          <Card key={gif.id}>
+          <Card key={gif.id} className={classes.root}>
             <CardActionArea>
               <CardMedia
                 component="img"
-                height="30%"
-                width="30%"
                 image={gif.url}
+                className={classes.media}
               />
               <CardContent>
                 <form>
@@ -82,7 +86,7 @@ function Favorite() {
                   </>
                     )})}
                   <Button type="submit" variant="contained" color="primary" onClick={()=>{changeCategory(gif.id)}}>
-                    Next
+                    Change
                   </Button>
                 </form>
               </CardContent>
@@ -90,7 +94,7 @@ function Favorite() {
           </Card>
         );
       })}
-    </>
+    </Grid>
   );
 }
 
