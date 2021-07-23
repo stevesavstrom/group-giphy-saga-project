@@ -1,6 +1,8 @@
 import {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux'
 
+import { Card, CardActionArea, CardMedia, CardContent } from '@material-ui/core';
+
 function Favorite() {
     const dispatch = useDispatch();
 
@@ -35,21 +37,29 @@ function Favorite() {
 
     return (
 
-        <ul>
+        <>
         {favoriteReducer.map(gif => {
             return (
-                <li key={gif.id}><img src={gif.url} width="30%"/>
-                <select onChange={(event)=>{setNewCategory(category.name)}}>
-                    <option value="blank">------</option>
-                    {categoryReducer.map(category => {
-                        return ( <option key={category.id} value={category.name}>{category.name}</option>)
-                    })}
-                </select>
-                </li>
+                <Card key={gif.id}>
+                    <CardActionArea>
+                        <CardMedia
+                            component="img"
+                            height="250"
+                            image={gif.url}
+                        />
+                        <CardContent>
+                            <select onChange={(event)=>{setNewCategory(category.name)}}>
+                            <option value="blank">------</option>
+                            {categoryReducer.map(category => {
+                                return ( <option key={category.id} value={category.name}>{category.name}</option>)
+                            })}
+                            </select>
+                        </CardContent>
+                    </CardActionArea>
+                </Card>
             )
         })}
-        </ul>
-
+        </>
     )
 
 }
