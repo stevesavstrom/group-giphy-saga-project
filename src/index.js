@@ -21,8 +21,8 @@ const sagaMiddleware= createSagaMiddleware();
 
 const searchResults = ( state = [], action ) => {
         if(action.type === 'SET_RESULTS') {
-          console.log(action.payload);
-        return action.payload;
+          console.log(`in searchResults`, action.payload);
+        return [...state, action.payload];
     }
     return state;
 }
@@ -45,9 +45,10 @@ const categoryReducer = (state = [], action) => {
 // Generator Function(s)
 
 // When a search term is entered, the GET returns results
-function* fetchSearch() {
+function* fetchSearch(action) {
 	try {
-		const response = yield axios.get('api/search');
+    console.log(`sending search`);
+		const response = yield axios.get(`api/search?q=${action.payload}`);
 		yield put({ type: 'SET_RESULTS', payload: response.data});
 	} catch (error) {
 		console.log('Error fetching GIFs', error);

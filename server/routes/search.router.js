@@ -5,18 +5,18 @@ require("dotenv").config();
 
 router.get("/", (req, res) => {
   const search = req.query.q;
-  console.log(req.query.q);
+  console.log(`router get`, req.query.q);
 
-  // axios.get('/search?q={searchInput}', (req, res) => {
+  // axios.get('api/search?q={searchInput}', (req, res) => {
 
   axios
     .get(
-      `http://api.giphy.com/v1/gifs/search?api_key=${process.env.GIPHY_API_KEY}&limit=5&q=PLACEHOLDER`
+      `http://api.giphy.com/v1/gifs/search?api_key=${process.env.GIPHY_API_KEY}&limit=3&q=${search}`
     )
     .then((response) => {
-      console.log(response.data);
+      console.log(`server GEt`, response.data.data);
       // res.sendStatus(200);
-      res.send(response.data); //should we target here?
+      res.send(response.data.data); //should we target here?
     })
     .catch((err) => {
       console.log(err);
