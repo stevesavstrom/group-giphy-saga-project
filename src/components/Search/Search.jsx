@@ -36,18 +36,19 @@ function Search() {
       <form onSubmit={getSearchResults}>
         <center>
         <input
+            className="Search"
             value={search}
             onChange={handleSearchChange}
             placeholder="Search for Gifs"
           />
-          <button type="submit">Search</button>
+          <button className="searchButton" type="submit">Search</button>
       </center>
       </form>
 
       <table>
         <thead>
           <tr>
-            <th>Search Results</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>

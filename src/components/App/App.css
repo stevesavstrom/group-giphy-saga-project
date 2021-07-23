@@ -5,8 +5,36 @@
     rgba(215, 246, 255, 1) 0%,
     rgba(245, 97, 251, 1) 40%
   );
-  padding: 20px;
+  padding: 30px;
+  margin: -10px;
   text-align: center;
+}
+
+.Copyright {
+	text-align: center;
+	font-style: italic;
+	padding-top: 20px;
+	color: #F460FA;
+}
+
+.Search {
+	width: 33%;
+	padding: 10px;
+	border: 2px solid black;
+	border-radius: 4px;
+}
+
+.searchButton {
+	height: 37px;
+	margin-left: 5px;
+	border: 2px solid black;
+	border-radius: 4px;
+	background-color: #F460FA;
+}
+
+.searchButton:hover {
+	background-color: #fca7ff;
+	cursor: pointer;
 }
 
 /* input {

@@ -30,7 +30,7 @@ function App(props) {
           <Route path="/favorites" exact>
            <Favorite />
           </Route>
-      
+      <p className="Copyright">© 2021 Team Camel-Cheetah (Duy, Kash, Matt, Steve)</p>
       </div>
     </Router>
   );
