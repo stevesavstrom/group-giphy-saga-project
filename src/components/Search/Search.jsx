@@ -3,12 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 
 function Search() {
     const dispatch = useDispatch();
-    const [search, setSearch]= useState([]);
+    const [search, setSearch]= useState();
     const searchResults = useSelector (store => store.searchResults)
+    console.log(`Search results from Search component`, searchResults);
 
-    useEffect(() => {
-        getSearchResults();
-    }, []);
+    // useEffect(() => {
+    //     getSearchResults();
+    // }, []);
 
     const handleSearchChange = () => {
         event.preventDefault();
@@ -18,7 +19,7 @@ function Search() {
 
     const getSearchResults = () => {
         dispatch({ type: 'FETCH_SEARCH', payload: search});
-        setSearch('');
+        
     }
 
     return (
@@ -41,13 +42,16 @@ function Search() {
                 
             </thead>
             <tbody>
+              {searchResults.map(result => (
               <tr>
-                <td>enter .map here to go over the search objects
+                <td>
+                  <img src={result.data.data.images.original.url}></img>
                     <form onSubmit={getSearchResults}>
                         <button name="favorite">Favorite</button>
                     </form>
                 </td>
               </tr>
+              ))}
             </tbody>
         </table>
       </>
@@ -55,3 +59,25 @@ function Search() {
 }
 
 export default Search;
+
+// <>
+// 		  <h2>Shopping List</h2>
+// 		  <table>
+// 			<thead>
+// 			  <tr>
+// 				<th>Items</th>
+// 				<th></th>
+// 			  </tr>
+// 			</thead>
+// 			<tbody>
+// 			  {props.list.map(items => (
+// 				<tr key={items.id}>
+// 				  <td>{items.item}</td>
+// 				  <td>{items.quantity}</td>
+// 				  <td>{items.unit}</td>
+// 				  <td><button name="favorite">Favorite</button></td>
+// 				</tr>
+// 			  ))}
+// 			</tbody>
+// 		  </table>
+// 		</>

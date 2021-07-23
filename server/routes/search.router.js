@@ -11,12 +11,12 @@ router.get("/", (req, res) => {
 
   axios
     .get(
-      `http://api.giphy.com/v1/gifs/search?api_key=${process.env.GIPHY_API_KEY}&limit=10&q=PLACEHOLDER`
+      `http://api.giphy.com/v1/gifs/search?api_key=${process.env.GIPHY_API_KEY}&limit=5&q=PLACEHOLDER`
     )
     .then((response) => {
       console.log(response.data);
       // res.sendStatus(200);
-      res.send(response.data);
+      res.send(response.data); //should we target here?
     })
     .catch((err) => {
       console.log(err);
