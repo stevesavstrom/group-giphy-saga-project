@@ -44,7 +44,8 @@ function Favorite() {
                     <CardActionArea>
                         <CardMedia
                             component="img"
-                            height="250"
+                            height="30%"
+                            width="30%"
                             image={gif.url}
                         />
                         <CardContent>
