@@ -22,7 +22,7 @@ const sagaMiddleware= createSagaMiddleware();
 const searchResults = ( state = [], action ) => {
         if(action.type === 'SET_RESULTS') {
           console.log(`in searchResults`, action.payload);
-        return [...state, action.payload];
+        return action.payload;
     }
     return state;
 }
