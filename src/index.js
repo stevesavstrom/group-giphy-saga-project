@@ -13,6 +13,7 @@ import axios from 'axios';
 function* rootSaga(){
     yield takeEvery('FETCH_SEARCH', fetchSearch); // client side button click to submit search results
     yield takeEvery('FAVORITE_GIF', favoriteGif); // client side button click to add to favorites
+    yield takeEvery('CHANGE_CATEGORY', changeCategory); // client side button click to change to category
     yield takeEvery('FETCH_FAVORITE', fetchFavorite); // Any time a GET request for favorites is needed
     yield takeEvery('FETCH_CATEGORY', fetchCategory); // Any time GET request for category is needed
     // yield takeEvery('DELETE_FAVORITE', deleteFavorite);
