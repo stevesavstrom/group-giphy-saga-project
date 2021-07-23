@@ -41,18 +41,20 @@ function Search() {
                 
             </thead>
             <tbody>
-              {searchResults.map((result, i) => (
+              {searchResults.map((result, i) => {
+                return (
               <tr key={i}>
                 <td>
 
-                  <img src={result.data[0].images.original.url}></img>
+                  <img src={result[2].images.original.url}></img>
                     <form onSubmit={getSearchResults}>
                         <button name="favorite">Favorite</button>
                     </form>
 
                 </td>
               </tr>
-              ))}
+              )
+                })}
             </tbody>
         </table>
       </>
