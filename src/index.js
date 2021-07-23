@@ -21,8 +21,7 @@ const sagaMiddleware= createSagaMiddleware();
 
 const searchResults = ( state = [], action ) => {
         if(action.type === 'SET_RESULTS') {
-          console.log(`Looking for searchResults`, action.payload);
-          console.log(action.payload.data);
+          console.log(action.payload);
         return action.payload;
     }
     return state;
@@ -85,7 +84,6 @@ function* fetchSearch() {
       console.log('Error GETting categories', error);
     }
   }
-
 
 const store = createStore(
 	combineReducers({ 

@@ -3,8 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 
 function Search() {
     const dispatch = useDispatch();
-    const [search, setSearch]= useState([]);
+    const [search, setSearch]= useState();
     const searchResults = useSelector (store => store.searchResults)
+    console.log(`Search results from Search component`, searchResults);
 
     // useEffect(() => {
     //     getSearchResults();
@@ -44,11 +45,10 @@ function Search() {
               {searchResults.map(result => (
               <tr>
                 <td>
-                  {result}
+                  <img src={result.data.data.images.original.url}></img>
                     <form onSubmit={getSearchResults}>
                         <button name="favorite">Favorite</button>
                     </form>
-                    
                 </td>
               </tr>
               ))}
@@ -59,8 +59,6 @@ function Search() {
 }
 
 export default Search;
-
-
 
 // <>
 // 		  <h2>Shopping List</h2>
